@@ -3,9 +3,7 @@ You can install the development version of the <tt>FuzzySpec</tt> package from G
 ## INSTALLATION
 
 library(devtools)
-
 install_github("ghashti-j/FuzzySpec")
-
 library(FuzzySpec)
 
 

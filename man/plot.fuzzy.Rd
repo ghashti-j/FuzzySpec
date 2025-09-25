@@ -8,13 +8,14 @@ Creates a ggplot of 2D points with optional colouring by hard labels and optiona
 }
 
 \usage{
-\method{plot}{fuzzy}(data, plotFuzzy = TRUE, colorCluster = TRUE)
+\method{plot}{fuzzy}(x, plotFuzzy = TRUE, colorCluster = TRUE, ...)
 }
 
 \arguments{
-  \item{data}{A list as returned by \code{\link{gen.fuzzy}}, containing \code{X}, \code{U}, \code{y}, and \code{k}.}
+  \item{x}{A list as returned by \code{\link{gen.fuzzy}}, containing \code{X}, \code{U}, \code{y}, and \code{k}.}
   \item{plotFuzzy}{Logical; if \code{TRUE}, map observation size to uncertainty \eqn{1-\max_j U_{ij}}.}
   \item{colorCluster}{Logical; if \code{TRUE}, colour points by the hard cluster label \code{y}.}
+  \item{...}{Additional arguments (currently unused).}
 }
 
 \details{

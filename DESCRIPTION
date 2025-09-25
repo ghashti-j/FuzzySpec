@@ -1,6 +1,7 @@
 Package: FuzzySpec
 Type: Package
-Title: Fuzzy Spectral Clustering with Variable-Weighted Adjacency Constructions
+Title: Fuzzy Spectral Clustering with Variable-Weighted Adjacency
+        Constructions
 Version: 1.0.0
 Date: 2025-09-23
 Authors@R: c(person("Jesse S.","Ghashti", email="jesse.ghashti@ubc.ca", role = c("aut","cre")),
@@ -11,19 +12,10 @@ Description: Implementation of the FVIBES, the Fuzzy Variable-Importance Based E
 License: GPL-2
 Encoding: UTF-8
 Depends: R (>= 3.5.0)
-Imports:
-    stats,
-    Thresher,
-    fclust,
-    mclust,
-    mvtnorm,
-    np,
-    ggplot2
-Suggests:
-    knitr,
-    MASS,
-    rmarkdown,
-    patchwork,
-    scales
+Imports: stats, Thresher, fclust, mclust, mvtnorm, np, ggplot2,
+        viridisLite
+Suggests: knitr, MASS, rmarkdown, patchwork, devtools
 VignetteBuilder: knitr
 NeedsCompilation: no
+RoxygenNote: 7.3.3
+Packaged: 2025-09-25 20:45:37 UTC; jesseghashti
