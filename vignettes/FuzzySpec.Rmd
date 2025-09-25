@@ -24,6 +24,13 @@ library(mclust)
 library(fclust)
 library(ggplot2)
 library(patchwork)
+library(mvtnorm)
+library(stats)
+library(knitr)
+library(np)
+library(MASS)
+library(rmarkdown)
+library(scales)
 ```
 
 # Introduction
