@@ -10,7 +10,7 @@ Maintainer: Jesse S. Ghashti <jesse.ghashti@ubc.ca>
 Description: Implementation of the FVIBES, the Fuzzy Variable-Importance Based Eigenspace Separation algorithm as described in the paper by Ghashti, J.S., Hare, W., and J.R.J Thompson (2025). Variable-Weighted Adjacency Constructions for Fuzzy Spectral Clustering. Submitted.
 License: GPL-2
 Encoding: UTF-8
-Depends: R (>= 3.5.0)
+Depends: R (>= 3.5.0) ggplot2, rlang
 Imports:
     stats,
     Thresher,
