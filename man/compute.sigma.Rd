@@ -5,7 +5,7 @@
 
 \description{
 Derives pointwise scale parameters \eqn{\sigma_i} from a distance matrix,
-based on the \eqn{r}-th nearest neighbor distances. This is useful for
+based on the \eqn{r}-th nearest neighbour distances. This is useful for
 constructing the adaptive similarity graphs proposed by Zelnik-Manor and Perona (2004).
 }
 
@@ -15,7 +15,7 @@ compute.sigma(distance, r = NULL)
 
 \arguments{
   \item{distance}{An \eqn{n \times n} numeric (symmetric) distance matrix. Required.}
-  \item{r}{Integer valued neighbourhood radius. If \code{NULL}, it is estimated adaptively with \code{\link{find.radius}}.}
+  \item{r}{Integer valued neighbourhood radius. If \code{NULL}, this value is estimated adaptively with \code{\link{find.radius}}.}
 }
 
 \details{
@@ -32,7 +32,7 @@ A list with components:
 \references{
   Ghashti, J. S., Hare, W., and J. R. J. Thompson (2025). Variable-weighted adjacency constructions for fuzzy spectral clustering. Submitted.
 
-  Zelnik-Manor, L., and P. Perona (2004). Self-tuning spectral clustering. \emph{Advances in Neural Information Processing Systems, 17}.
+  Zelnik-Manor, L. and P. Perona (2004). Self-tuning spectral clustering. \emph{Advances in Neural Information Processing Systems, 17}.
 }
 
 \seealso{

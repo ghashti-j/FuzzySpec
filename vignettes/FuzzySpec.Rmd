@@ -36,7 +36,7 @@ library(rmarkdown)
 The \(\texttt{FuzzySpec}\) package implements the **FVIBES** (Fuzzy Variable-Importance Based Eigenspace Separation) algorithm, a fuzzy spectral clustering procedure that incorporates variable-weighted distance metrics and adaptive adjacency matrix constructions. This package accompanies the paper _Variable-Weighted Adjacency Constructions for Fuzzy Spectral Clustering_ by Ghashti, Hare, and Thompson (2025).
 
 
-The key feature of this package include 
+The key features of this package include:
 
 - a variable-weighted distance metric that automatically determines variable importance using nonparametric kernel density estimation, 
 
@@ -48,7 +48,7 @@ The key feature of this package include
 
 
 ## Package Overview
-There are three primary functions needed to conduct FVIBES clustering
+There are three primary functions needed to conduct FVIBES clustering:
 
 1. Build an adjacency matrix from the data using \(\texttt{make.adjacency()}\)
 

@@ -17,7 +17,7 @@ clustering.accuracy(A, B)
 }
 
 \details{
-The function forms the contingency table \code{table(A, B)}, permutes columns to best align labels using \code{\link[Thresher]{matchLabels}},
+The function creates the contingency table \code{table(A, B)}, permutes columns to best align labels using \code{\link[Thresher]{matchLabels}},
 and returns the sum of the diagonal divided by \eqn{n}.
 
 Inputs must have equal length and the same number of unique labels; otherwise an error is given.
