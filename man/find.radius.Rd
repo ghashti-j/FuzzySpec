@@ -19,7 +19,7 @@ find.radius(D)
 }
 
 \details{
-This procedure is adapated from the \emph{Natural Neighbor (NaN)}
+This procedure is adapted from the \emph{Natural Neighbor (NaN)}
 algorithm by Zhu, Feng and Huang (2016). The algorithm works as follows:
 
 \enumerate{
