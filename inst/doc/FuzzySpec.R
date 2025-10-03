@@ -29,7 +29,7 @@ set.seed(1)
 data <- FuzzySpec::gen.fuzzy(n = 300, dataset = "spirals", noise = 0.15) # data generation
 FuzzySpec::plot.fuzzy(data, plotFuzzy = TRUE, colorCluster = TRUE) # plot data generating process
 
-## -----------------------------------------------------------------------------
+## ----message = FALSE----------------------------------------------------------
 W <- FuzzySpec::make.adjacency(
   data = data$X,
   method = "vw",           # variable-weighted distances
@@ -41,11 +41,15 @@ W <- FuzzySpec::make.adjacency(
 res <- FuzzySpec::fuzzy.spectral.clustering(
   W = W, k = 3, m = 1.5, method = "CM"           
 )
-res$U[1:5,]
+res$u[1:5,]
 
 ## -----------------------------------------------------------------------------
 acc <- FuzzySpec::clustering.accuracy(data$y, res$cluster)
 cat("Clustering accuracy:", round(acc, 3), "\n")
+
+## -----------------------------------------------------------------------------
+far <- FuzzySpec::fari(data$U, res$u)
+cat("FARI:", round(far, 3), "\n")
 
 ## ----fig.align='center'-------------------------------------------------------
 resDF <- list(

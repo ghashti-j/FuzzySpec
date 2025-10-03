@@ -80,7 +80,7 @@ FuzzySpec::plot.fuzzy(data, plotFuzzy = TRUE, colorCluster = TRUE) # plot data g
 
 2. Build a variable-weighted locally-adaptive adjacency matrix, corresponding to the adjacency \(\mathbf{W}^{(\text{vwla-id})}\) in Ghashti et al. (2025):
 
-```{r}
+```{r, message = FALSE}
 W <- FuzzySpec::make.adjacency(
   data = data$X,
   method = "vw",           # variable-weighted distances
@@ -95,7 +95,7 @@ W <- FuzzySpec::make.adjacency(
 res <- FuzzySpec::fuzzy.spectral.clustering(
   W = W, k = 3, m = 1.5, method = "CM"           
 )
-res$U[1:5,]
+res$u[1:5,]
 ```
 
 4. We can compare the hard clustering results to the true class labels:
@@ -105,7 +105,14 @@ acc <- FuzzySpec::clustering.accuracy(data$y, res$cluster)
 cat("Clustering accuracy:", round(acc, 3), "\n")
 ```
 
-5. Finally, we can visualize the clustering results with observations, where observations are assigned by hard cluster labels and sized by the membership matrix \(\mathbf{U}\):
+5. We can compare the membership matrix \(\mathbf{U}\) determined by FVIBES to the true probabilistic cluster memberships with function \(\texttt{fari}\), which computes fuzzy generalizations of the Adjusted Rand Index (FARI) based on Frobenius inner products of membership matrices (Andrews, Brown and Hvingelby, 2022). 
+
+```{r}
+far <- FuzzySpec::fari(data$U, res$u)
+cat("FARI:", round(far, 3), "\n")
+```
+
+6. Finally, we can visualize the clustering results with observations, where observations are assigned by hard cluster labels and sized by the membership matrix \(\mathbf{U}\):
 
 ```{r, fig.align='center'}
 resDF <- list(
@@ -131,6 +138,8 @@ See respective help files for each function when needed; here we provide a basic
 * \(\texttt{isSparse}\): sparsification when using weighting
 
 **References**
+
+* Andrews, J.L., Browne, R. and C.D. Hvingelby (2022). On Assessments of Agreement Between Fuzzy Partitions. _Journal of Classification, 39_, 326–342.
 
 * J.C. Bezdek (1981). _Pattern Recognition with Fuzzy Objective Function Algorithms_. Plenum Press, New York.
   
