@@ -7,7 +7,7 @@
 Implements a Natural Neighbour search to adaptively determine a neighbourhood
 radius \eqn{r} from a general distance matrix. The algorithm increases \eqn{r}
 until the number of points with zero in-degree in the \eqn{r}-nearest-neighbour
-graph no longer descreases, and returns this radius \eqn{r}.
+graph no longer decreases, and returns this radius \eqn{r}.
 }
 
 \usage{
@@ -23,8 +23,7 @@ This procedure is adapted from the \emph{Natural Neighbor (NaN)}
 algorithm by Zhu, Feng and Huang (2016). The algorithm works as follows:
 
 \enumerate{
-  \item For each integer \eqn{r}, build the directed \eqn{r}-nearest-neighbour
-  (rNN) graph from \code{D}.
+  \item For each integer \eqn{r}, build the directed \eqn{r}-nearest-neighbour graph from \code{D}.
   \item Compute the in-degree counts, i.e., how many times each observation
   appears among others' first \eqn{r} neighbours.
   \item Track the number of zero in-degree points; if this number stops

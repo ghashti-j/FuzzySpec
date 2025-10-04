@@ -1,7 +1,7 @@
 \name{fari}
 \alias{fari}
 
-\title{Frobenius Adjusted Rand Indice for Comparing Two Partition Matrices}
+\title{Frobenius Adjusted Rand Index for Comparing Two Partition Matrices}
 
 \description{
 Computes fuzzy generalizations of the  Adjusted Rand Index based on Frobenius inner products of membership matrices. These measures extends the Adjusted Rand Index to compare fuzzy partitions.

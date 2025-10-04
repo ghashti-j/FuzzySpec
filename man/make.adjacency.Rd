@@ -4,7 +4,7 @@
 \title{A General Framework for Adjacency Matrix Construction}
 
 \description{
-Builds an \eqn{n \times n} adjacency matrix from data using Euclidean or variable-weighted distances, with optional locally-adaptive scalings and optional variable weighting by shared-nearest-neighbours (SNN), similarity ranks (SIM), or both. The options reproduce a family of adjacencies including the variants described by Ghashti, Hare and Thompson (2025).
+Builds an \eqn{n \times n} adjacency matrix from data using Euclidean or variable-weighted distances, with optional locally-adaptive scalings and optional variable weighting by shared-nearest-neighbours (SNN), similarity ranks (SIM), or both. The options reproduce a family of adjacency matrices including the variants described by Ghashti, Hare and Thompson (2025).
 }
 
 \usage{
@@ -25,7 +25,7 @@ make.adjacency(data,
   \item{method}{Distance construction  \code{"eu"} for Euclidean; \code{"vw"} for variable-weighted scaling (see Details). Defaults to \code{"v"}.}
   \item{isLocWeighted}{Logical. If \code{TRUE}, use locally-adaptive scalings \eqn{\sigma_i} (Zelnik–Perona) to self-tune the kernel; otherwise use a global scale \code{sig}. Defaults to \code{FALSE}.}
   \item{isModWeighted}{Logical. If \code{TRUE}, apply a weighting matrix \eqn{M} based on SNN and/or SIM (see Details). Defaults to \code{FALSE}}
-  \item{isSparse}{Logical. If \code{TRUE} and \code{isModWeighted = TRUE}, then SNN (\code{ModMethod = "snn"}) and/or SIM (\code{ModMethod = "sim"}) arguments sparisfy the adjacency matrix (see Details). Defaults to \code{FALSE}.}
+  \item{isSparse}{Logical. If \code{TRUE} and \code{isModWeighted = TRUE}, then SNN (\code{ModMethod = "snn"}) and/or SIM (\code{ModMethod = "sim"}) arguments creates a sparse adjacency matrix (see Details). Defaults to \code{FALSE}.}
   \item{ModMethod}{One of \code{"snn"}, \code{"sim"}, or \code{"both"} when \code{isModWeighted=TRUE}.}
   \item{scale}{Logical; standardize columns of \code{data} before distance construction.}
   \item{sig}{Positive numeric value for global kernel width, used only when \code{isLocWeighted=FALSE}.}
@@ -42,7 +42,7 @@ make.adjacency(data,
 
 \strong{Step 2:Similarity kernel.}
 \itemize{
-  \item \emph{Locally-adapative scaling} from Zelnik-Manor: if \code{isLocWeighted=TRUE}, compute \eqn{\sigma_i} as the distance to the \eqn{r}-th neighbour with \code{\link{compute.sigma}} and set
+  \item \emph{Locally-adaptive scaling} from Zelnik-Manor: if \code{isLocWeighted=TRUE}, compute \eqn{\sigma_i} as the distance to the \eqn{r}-th neighbour with \code{\link{compute.sigma}} and set
   \deqn{S_{ij}=\exp\!\Big(-D_{ij}^2 / (\sigma_i \sigma_j)\Big),\quad S_{ii}=1.}
   \item \emph{Global scale}: if \code{isLocWeighted=FALSE},
   \deqn{S_{ij}=\exp\!\Big(-D_{ij}^2 / \sigma^2\Big),\quad S_{ii}=1.}
@@ -69,13 +69,13 @@ For \code{isModWeighted=TRUE} we have the following options
       \end{cases}}
 }
 The returned adjacency is \eqn{W = S \circ M} when \code{isModWeighted = TRUE}, otherwise \eqn{W=S}.
-These choices align with the table of named adjacencies (see Mapping below).
+These choices align with the table of named adjacency matrices (see Mapping below).
 }
 
-\section{Mapping to named adjacencies}{
+\section{Mapping to named adjacency matrices}{
 
-Relating to the paper by Ghashti, Hare, and Thompson (2025), let "vw" denote the variable-weighted distance \code{method="vw"} and \code{"eu"} for the traditional squared Euclidean distance; "la" denotes locally-adaptive scaling when \code{isLocWeighted=TRUE} (Zelnik-Manor and Perona, 2004);
-"id" denotes identity for \code{isModWeighted = FALSE}, and "sim", "snn" and "simsnn" denote weightings for \eqn{M} described above.
+Relating to the paper by Ghashti, Hare, and Thompson (2025), let \code{"vw"} denote the variable-weighted distance \code{method="vw"} and \code{"eu"} for the traditional squared Euclidean distance; \code{"la"} denotes locally-adaptive scaling when \code{isLocWeighted=TRUE} (Zelnik-Manor and Perona, 2004);
+\code{"id"} denotes identity for \code{isModWeighted = FALSE}, and \code{"sim"}, \code{"snn"} and \code{"simsnn"} denote weightings for \eqn{M} described above.
 
 To reproduce results from the 2025 paper, below are a few examples of adjacency construction:
 \itemize{
@@ -97,7 +97,7 @@ Also note that:
 \itemize{
   \item When \code{r} is determined by \code{\link{find.radius}}, we implement a modified version of the Natural Neighbors algorithm from Zhu et al. (2016).
   \item SNN is a modified version of the Shared Nearest Neighbors algorithm from Jarvis and Patrick (1973).
-  \item More informating on locally-adaptive scalings are seen in Zelnik-Manor and Perona (2004).
+  \item More information on locally-adaptive scalings are seen in Zelnik-Manor and Perona (2004).
 }
 }
 

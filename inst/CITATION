@@ -1,22 +1,32 @@
 citHeader("To cite package 'FuzzySpec' (first citation) or function 'FARI' (second citation) in publications use:")
-     
-citEntry(entry="Manual",
-         title = "FuzzySpec: Fuzzy spectral clustering with variable-weighted adjacencies",
-    	author = personList(person(given=c("Jesse", "S."),family="Ghashti"),person(given=c("John", "R.J."), family="Thompson")),
-    	year = "2025",
-    	note = "R package version 1.0.0",
-    	textVersion = "Ghashti, J.S., and J.R.J Thompson (2025). FuzzySpec: Fuzzy spectral clustering with variable-weighted adjacencies. R version 1.0.0."
+
+
+bibentry(
+  bibtype = "Manual",
+  title   = "FuzzySpec: Fuzzy spectral clustering with variable-weighted adjacencies",
+  author  = c(
+    person(given = c("Jesse", "S."), family = "Ghashti"),
+    person(given = c("John", "R.J."), family = "Thompson")
+  ),
+  year    = "2025",
+  note    = "R package version 1.0.0",
+  textVersion = "Ghashti, J.S., and J.R.J. Thompson (2025). FuzzySpec: Fuzzy spectral clustering with variable-weighted adjacencies. R package version 1.0.0."
 )
 
 
-citEntry(entry="Article",
-  title="On assessments of agreement between fuzzy partitions",
-  author=personList(person(given=c("Jeffrey", "L."), family="Andrews"),person(given="Ryan", family="Brown"),person(given=c("Chelsey", "D."), family="Hvingelby")),
-  journal="Journal of Classification",
-  volume="39",
-  pages="326--342",
-  year="2022",
-  textVersion = "Andrews, J.L., Browne, R. and C.D. Hvingelby (2022). On assessments of agreement between fuzzy partitions. Journal of Classification, 39, 326–342. "
+bibentry(
+  bibtype = "Article",
+  title   = "On assessments of agreement between fuzzy partitions",
+  author  = c(
+    person(given = c("Jeffrey", "L."), family = "Andrews"),
+    person(given = "Ryan", family = "Browne"),     
+    person(given = c("Chelsey", "D."), family = "Hvingelby")
+  ),
+  journal = "Journal of Classification",
+  year    = "2022",
+  volume  = "39",
+  pages   = "326--342",
+  textVersion = "Andrews, J.L., Browne, R., and C.D. Hvingelby (2022). On assessments of agreement between fuzzy partitions. Journal of Classification, 39, 326–342."
 )
 
 citFooter("For BibTeX entries, call: toBibtex(citation('FuzzySpec'))")

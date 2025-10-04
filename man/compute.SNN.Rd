@@ -12,7 +12,7 @@ compute.SNN(similarity, r)
 }
 
 \arguments{
-  \item{similarity}{An \eqn{n \times n} numeric \emph{similarity} matrix. The diagonal is assumed to correspond to self-similarity and is ignored when forming neighboir lists.}
+  \item{similarity}{An \eqn{n \times n} numeric \emph{similarity} matrix. The diagonal is assumed to correspond to self-similarity and is ignored when forming neighbour lists.}
   \item{r}{Integer value number of nearest neighbours per observation used to compute SNN overlap.}
 }
 

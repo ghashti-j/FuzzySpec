@@ -4,7 +4,7 @@
 \title{Plot 2D Fuzzy Data with Optional Uncertainty Sizing and Cluster Colouring}
 
 \description{
-Creates a ggplot of 2D points with optional colouring by hard labels and optional observation-size mapping to fuzzy uncertainty.
+Creates a  \code{\link[ggplot2]{ggplot}} of 2D points with optional colouring by hard labels and optional observation-size mapping to fuzzy uncertainty.
 }
 
 \usage{
@@ -33,7 +33,7 @@ A \code{ggplot} object.
 }
 
 \references{
-  H. Wickham (2016). \emph{ggplot2: Elegant Graphics for Data Analysis}. Springer-Verlag New York.
+  H. Wickham (2016). \emph{ggplot2: Elegant Graphics for Data Analysis}. Springer--Verlag New York.
 }
 
 \seealso{

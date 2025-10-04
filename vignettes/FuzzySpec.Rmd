@@ -1,10 +1,10 @@
 ---
-title: "FuzzySpec: Fuzzy Spectral Clustering with Variable-Weighted Adjacencies"
+title: "Fuzzy Spectral Clustering with Variable-Weighted Adjacency Matrices"
 author: "Jesse S. Ghashti and John R. J. Thompson"
 date: "`r format(Sys.Date())`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{FuzzySpec: Fuzzy Spectral Clustering with Variable-Weighted Adjacencies}
+  %\VignetteIndexEntry{Fuzzy Spectral Clustering with Variable-Weighted Adjacency Matrices}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -33,7 +33,7 @@ library(rmarkdown)
 
 # Introduction
 
-The \(\texttt{FuzzySpec}\) package implements the **FVIBES** (Fuzzy Variable-Importance Based Eigenspace Separation) algorithm, a fuzzy spectral clustering procedure that incorporates variable-weighted distance metrics and adaptive adjacency matrix constructions. This package accompanies the paper _Variable-Weighted Adjacency Constructions for Fuzzy Spectral Clustering_ by Ghashti, Hare, and Thompson (2025).
+The **FuzzySpec** package implements the **FVIBES** (Fuzzy Variable-Importance Based Eigenspace Separation) algorithm, a fuzzy spectral clustering procedure that incorporates variable-weighted distance metrics and adaptive adjacency matrix constructions. This package accompanies the paper _Variable-Weighted Adjacency Constructions for Fuzzy Spectral Clustering_ by Ghashti, Hare, and Thompson (2025).
 
 
 The key features of this package include:
@@ -44,21 +44,21 @@ The key features of this package include:
 
 - clustering outputs that return fuzzy membership matrices rather than just hard cluster assignments, and
 
-- a synthetic dataset generation containing built-in generators for benchmarking fuzzy clustering algorithms.
+- a synthetic dataset generation containing built-in generators to benchmark fuzzy clustering algorithms.
 
 
 ## Package Overview
 There are three primary functions needed to conduct FVIBES clustering:
 
-1. Build an adjacency matrix from the data using \(\texttt{make.adjacency()}\)
+1. Build an adjacency matrix from the data using `make.adjacency()`
 
-2. Perform fuzzy spectral clustering using \(\texttt{fuzzy.spectral.clustering()}\)
+2. Perform fuzzy spectral clustering using `fuzzy.spectral.clustering()`
 
-3. Optionally, examine results results with 2D visualization function \(\texttt{plot.fuzzy()}\) or compare to true class labels using \(\texttt{clustering.accuracy()}\).
+3. Optionally, examine results results with 2D visualization function `plot.fuzzy()` or compare to true class labels using `clustering.accuracy()`.
 
 # Installation
 
-Install the latest release version of \(\texttt{FuzzySpec}\) from [GitHub](https://github.com/ghashti-j/FuzzySpec) or with the following:
+Install the latest release version of **FuzzySpec** from [GitHub](https://github.com/ghashti-j/FuzzySpec) or with the following:
 
 ```{r, eval = FALSE}
 library(devtools)
@@ -70,7 +70,7 @@ library(FuzzySpec)
 
 The basic steps using built-in function are provided below. 
 
-1. First we generate a synthetic dataset \(\texttt{spirals}\), see the help file for \(\texttt{gen.fuzzy()}\) for more options and information.
+1. First we generate a synthetic dataset `spirals`, see the help file for `gen.fuzzy()` for more options and information.
 
 ```{r, fig.align='center'}
 set.seed(1)
@@ -78,7 +78,7 @@ data <- FuzzySpec::gen.fuzzy(n = 300, dataset = "spirals", noise = 0.15) # data 
 FuzzySpec::plot.fuzzy(data, plotFuzzy = TRUE, colorCluster = TRUE) # plot data generating process
 ```
 
-2. Build a variable-weighted locally-adaptive adjacency matrix, corresponding to the adjacency \(\mathbf{W}^{(\text{vwla-id})}\) in Ghashti et al. (2025):
+2. Build a variable-weighted locally-adaptive adjacency matrix, corresponding to the adjacency $\mathbf{W}^{(\text{vwla-id})}$ in Ghashti et al. (2025):
 
 ```{r, message = FALSE}
 W <- FuzzySpec::make.adjacency(
@@ -89,7 +89,7 @@ W <- FuzzySpec::make.adjacency(
 )
 ```
 
-3.  Perform fuzzy spectral clustering given the adjacenecy matrix \(\mathbf{W}\), number of clusters \(\texttt{k=3}\) and the commonly chosen fuzzifying parameter \(\texttt{m = 1.5}\). We display the first 5 rows of the membership matrix \(\mathbf{U}\):
+3.  Perform fuzzy spectral clustering given the adjacency matrix $\mathbf{W}$, number of clusters `k = 3` and the commonly chosen fuzzy parameter `m = 1.5`. We display the first 5 rows of the membership matrix $\mathbf{U}$:
 
 ```{r}
 res <- FuzzySpec::fuzzy.spectral.clustering(
@@ -105,14 +105,14 @@ acc <- FuzzySpec::clustering.accuracy(data$y, res$cluster)
 cat("Clustering accuracy:", round(acc, 3), "\n")
 ```
 
-5. We can compare the membership matrix \(\mathbf{U}\) determined by FVIBES to the true probabilistic cluster memberships with function \(\texttt{fari}\), which computes fuzzy generalizations of the Adjusted Rand Index (FARI) based on Frobenius inner products of membership matrices (Andrews, Brown and Hvingelby, 2022). 
+5. We can compare the membership matrix $\mathbf{U}$ determined by FVIBES to the true probabilistic cluster memberships with function `fari`, which computes fuzzy generalizations of the Adjusted Rand Index (FARI) based on Frobenius inner products of membership matrices (Andrews, Brown and Hvingelby, 2022). 
 
 ```{r}
 far <- FuzzySpec::fari(data$U, res$u)
 cat("FARI:", round(far, 3), "\n")
 ```
 
-6. Finally, we can visualize the clustering results with observations, where observations are assigned by hard cluster labels and sized by the membership matrix \(\mathbf{U}\):
+6. Finally, we can visualize the clustering results with observations, where observations are assigned by hard cluster labels and sized by the membership matrix $\mathbf{U}$:
 
 ```{r, fig.align='center'}
 resDF <- list(
@@ -123,19 +123,19 @@ FuzzySpec::plot.fuzzy(resDF, plotFuzzy = TRUE, colorCluster = TRUE)
 
 ## Adjacency Construction
 See respective help files for each function when needed; here we provide a basic overview of function arguments for
-\(\texttt{make.adjacency()}\). This function allows for flexible adjacency matrix constructions based on Ghashti et al., 2025. The parameters are as follows:
+`make.adjacency()`. This function allows for flexible adjacency matrix constructions based on Ghashti et al. (2025). The parameters are as follows:
 
-* \(\texttt{method}\): distance metric
-    + \(\texttt{"eu"}\): squared Euclidean distance
-    + \(\texttt{"vw"}\): variable-weighted distance using kernel density bandwidth estimation
-* \(\texttt{isLocWeighted}\): scaling approach
-    + \(\texttt{TRUE}\): locally-adaptive scaling (Zelnik-Manor & Perona, 2004)
-    + \(\texttt{FALSE}\): global scaling with parameter \(\texttt{sig}\)
-* \(\texttt{isModWeighted}\): apply similarity upweighting/downweighting
-    + \(\texttt{ModMethod = "snn"}\): shared nearest neighbors (Jarvis & Patrick, 1973)
-    + \(\texttt{ModMethod = "sim"}\): similarity-based weighting
-    + \(\texttt{ModMethod = "both"}\): combined SNN and SIM
-* \(\texttt{isSparse}\): sparsification when using weighting
+* `method`: distance metric
+    + `"eu"`: squared Euclidean distance
+    + `"vw"`: variable-weighted distance using kernel density bandwidth estimation
+* `isLocWeighted`: scaling approach
+    + `TRUE`: locally-adaptive scaling (Zelnik-Manor & Perona, 2004)
+    + `FALSE`: global scaling with parameter `sig`
+* `isModWeighted`: apply similarity weightings
+    + `ModMethod = "snn"`: shared nearest neighbors (Jarvis & Patrick, 1973)
+    + `ModMethod = "sim"`: similarity-based weighting
+    + `ModMethod = "both"`: combined SNN and SIM
+* `isSparse`: returns a sparse matrix when using weightings
 
 **References**
 
@@ -157,9 +157,9 @@ See respective help files for each function when needed; here we provide a basic
 
 * Ng, A., Jordan, M., and Y. Weiss (2001). On spectral clustering: Analysis and an algorithm. _Advances in Neural Information Processing Systems, 14_.
 
-* Scrucca, L., Fraley, C., Murphy, T.B., and A. E. Raftery (2023). _Model-Based Clustering, Classification, and Density Estimation Using mclust in R_. Chapman and Hall/CRC.
+* Scrucca, L., Fraley, C., Murphy, T.B., and A. E. Raftery (2023). _Model-Based Clustering, Classification, and Density Estimation Using mclust in R_. Chapman & Hall.
   
-* H. Wickham (2016). _ggplot2: Elegant Graphics for Data Analysis_. Springer-Verlag New York.
+* H. Wickham (2016). _ggplot2: Elegant Graphics for Data Analysis_. Springer--Verlag New York.
 
 * Zelnik-Manor, L., and P. Perona (2004). Self-tuning spectral clustering. _Advances in Neural Information Processing Systems, 17_.
 

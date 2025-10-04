@@ -12,9 +12,9 @@
 
 <meta name="author" content="Jesse S. Ghashti and John R. J. Thompson" />
 
-<meta name="date" content="2025-10-03" />
+<meta name="date" content="2025-10-04" />
 
-<title>FuzzySpec: Fuzzy Spectral Clustering with Variable-Weighted Adjacencies</title>
+<title>Fuzzy Spectral Clustering with Variable-Weighted Adjacency Matrices</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -338,20 +338,20 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">FuzzySpec: Fuzzy Spectral Clustering with
-Variable-Weighted Adjacencies</h1>
+<h1 class="title toc-ignore">Fuzzy Spectral Clustering with
+Variable-Weighted Adjacency Matrices</h1>
 <h4 class="author">Jesse S. Ghashti and John R. J. Thompson</h4>
-<h4 class="date">2025-10-03</h4>
+<h4 class="date">2025-10-04</h4>
 
 
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>The <span class="math inline">\(\texttt{FuzzySpec}\)</span> package
-implements the <strong>FVIBES</strong> (Fuzzy Variable-Importance Based
-Eigenspace Separation) algorithm, a fuzzy spectral clustering procedure
-that incorporates variable-weighted distance metrics and adaptive
-adjacency matrix constructions. This package accompanies the paper
+<p>The <strong>FuzzySpec</strong> package implements the
+<strong>FVIBES</strong> (Fuzzy Variable-Importance Based Eigenspace
+Separation) algorithm, a fuzzy spectral clustering procedure that
+incorporates variable-weighted distance metrics and adaptive adjacency
+matrix constructions. This package accompanies the paper
 <em>Variable-Weighted Adjacency Constructions for Fuzzy Spectral
 Clustering</em> by Ghashti, Hare, and Thompson (2025).</p>
 <p>The key features of this package include:</p>
@@ -364,25 +364,28 @@ options for building similarity graphs including locally-adaptive
 scaling (Zelnik-Manor and Perona, 2004),</p></li>
 <li><p>clustering outputs that return fuzzy membership matrices rather
 than just hard cluster assignments, and</p></li>
-<li><p>a synthetic dataset generation containing built-in generators for
-benchmarking fuzzy clustering algorithms.</p></li>
+<li><p>a synthetic dataset generation containing built-in generators to
+benchmark fuzzy clustering algorithms.</p></li>
 </ul>
 <div id="package-overview" class="section level2">
 <h2>Package Overview</h2>
 <p>There are three primary functions needed to conduct FVIBES
 clustering:</p>
 <ol style="list-style-type: decimal">
-<li><p>Build an adjacency matrix from the data using <span class="math inline">\(\texttt{make.adjacency()}\)</span></p></li>
-<li><p>Perform fuzzy spectral clustering using <span class="math inline">\(\texttt{fuzzy.spectral.clustering()}\)</span></p></li>
+<li><p>Build an adjacency matrix from the data using
+<code>make.adjacency()</code></p></li>
+<li><p>Perform fuzzy spectral clustering using
+<code>fuzzy.spectral.clustering()</code></p></li>
 <li><p>Optionally, examine results results with 2D visualization
-function <span class="math inline">\(\texttt{plot.fuzzy()}\)</span> or
-compare to true class labels using <span class="math inline">\(\texttt{clustering.accuracy()}\)</span>.</p></li>
+function <code>plot.fuzzy()</code> or compare to true class labels using
+<code>clustering.accuracy()</code>.</p></li>
 </ol>
 </div>
 </div>
 <div id="installation" class="section level1">
 <h1>Installation</h1>
-<p>Install the latest release version of <span class="math inline">\(\texttt{FuzzySpec}\)</span> from <a href="https://github.com/ghashti-j/FuzzySpec">GitHub</a> or with the
+<p>Install the latest release version of <strong>FuzzySpec</strong> from
+<a href="https://github.com/ghashti-j/FuzzySpec">GitHub</a> or with the
 following:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;ghashti-j/FuzzySpec&quot;</span>)</span>
@@ -392,9 +395,9 @@ following:</p>
 <h1>Sample Usage</h1>
 <p>The basic steps using built-in function are provided below.</p>
 <ol style="list-style-type: decimal">
-<li>First we generate a synthetic dataset <span class="math inline">\(\texttt{spirals}\)</span>, see the help file for
-<span class="math inline">\(\texttt{gen.fuzzy()}\)</span> for more
-options and information.</li>
+<li>First we generate a synthetic dataset <code>spirals</code>, see the
+help file for <code>gen.fuzzy()</code> for more options and
+information.</li>
 </ol>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> FuzzySpec<span class="sc">::</span><span class="fu">gen.fuzzy</span>(<span class="at">n =</span> <span class="dv">300</span>, <span class="at">dataset =</span> <span class="st">&quot;spirals&quot;</span>, <span class="at">noise =</span> <span class="fl">0.15</span>) <span class="co"># data generation</span></span>
@@ -413,10 +416,10 @@ et al. (2025):</li>
 <span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>)</span>
 <span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; Multistart 1 of 3 |Multistart 1 of 3 |Multistart 1 of 3 |Multistart 1 of 3 /Multistart 1 of 3 -Multistart 1 of 3 |Multistart 1 of 3 |Multistart 2 of 3 |Multistart 2 of 3 |Multistart 2 of 3 /Multistart 2 of 3 -Multistart 2 of 3 |Multistart 2 of 3 |Multistart 2 of 3 /Multistart 3 of 3 |Multistart 3 of 3 |Multistart 3 of 3 /Multistart 3 of 3 -Multistart 3 of 3 |Multistart 3 of 3 |                   </span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
-<li>Perform fuzzy spectral clustering given the adjacenecy matrix <span class="math inline">\(\mathbf{W}\)</span>, number of clusters <span class="math inline">\(\texttt{k=3}\)</span> and the commonly chosen
-fuzzifying parameter <span class="math inline">\(\texttt{m =
-1.5}\)</span>. We display the first 5 rows of the membership matrix
-<span class="math inline">\(\mathbf{U}\)</span>:</li>
+<li>Perform fuzzy spectral clustering given the adjacency matrix <span class="math inline">\(\mathbf{W}\)</span>, number of clusters
+<code>k = 3</code> and the commonly chosen fuzzy parameter
+<code>m = 1.5</code>. We display the first 5 rows of the membership
+matrix <span class="math inline">\(\mathbf{U}\)</span>:</li>
 </ol>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> FuzzySpec<span class="sc">::</span><span class="fu">fuzzy.spectral.clustering</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="at">W =</span> W, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">m =</span> <span class="fl">1.5</span>, <span class="at">method =</span> <span class="st">&quot;CM&quot;</span>           </span>
@@ -437,10 +440,10 @@ labels:</li>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; Clustering accuracy: 0.99</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>We can compare the membership matrix <span class="math inline">\(\mathbf{U}\)</span> determined by FVIBES to the
-true probabilistic cluster memberships with function <span class="math inline">\(\texttt{fari}\)</span>, which computes fuzzy
-generalizations of the Adjusted Rand Index (FARI) based on Frobenius
-inner products of membership matrices (Andrews, Brown and Hvingelby,
-2022).</li>
+true probabilistic cluster memberships with function <code>fari</code>,
+which computes fuzzy generalizations of the Adjusted Rand Index (FARI)
+based on Frobenius inner products of membership matrices (Andrews, Brown
+and Hvingelby, 2022).</li>
 </ol>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>far <span class="ot">&lt;-</span> FuzzySpec<span class="sc">::</span><span class="fu">fari</span>(data<span class="sc">$</span>U, res<span class="sc">$</span>u)</span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;FARI:&quot;</span>, <span class="fu">round</span>(far, <span class="dv">3</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
@@ -458,40 +461,33 @@ membership matrix <span class="math inline">\(\mathbf{U}\)</span>:</li>
 <div id="adjacency-construction" class="section level2">
 <h2>Adjacency Construction</h2>
 <p>See respective help files for each function when needed; here we
-provide a basic overview of function arguments for <span class="math inline">\(\texttt{make.adjacency()}\)</span>. This function
-allows for flexible adjacency matrix constructions based on Ghashti et
-al., 2025. The parameters are as follows:</p>
+provide a basic overview of function arguments for
+<code>make.adjacency()</code>. This function allows for flexible
+adjacency matrix constructions based on Ghashti et al. (2025). The
+parameters are as follows:</p>
 <ul>
-<li><span class="math inline">\(\texttt{method}\)</span>: distance
-metric
+<li><code>method</code>: distance metric
 <ul>
-<li><span class="math inline">\(\texttt{&quot;eu&quot;}\)</span>:
-squared Euclidean distance</li>
-<li><span class="math inline">\(\texttt{&quot;vw&quot;}\)</span>:
-variable-weighted distance using kernel density bandwidth
-estimation</li>
+<li><code>&quot;eu&quot;</code>: squared Euclidean distance</li>
+<li><code>&quot;vw&quot;</code>: variable-weighted distance using kernel density
+bandwidth estimation</li>
 </ul></li>
-<li><span class="math inline">\(\texttt{isLocWeighted}\)</span>: scaling
-approach
+<li><code>isLocWeighted</code>: scaling approach
 <ul>
-<li><span class="math inline">\(\texttt{TRUE}\)</span>: locally-adaptive
-scaling (Zelnik-Manor &amp; Perona, 2004)</li>
-<li><span class="math inline">\(\texttt{FALSE}\)</span>: global scaling
-with parameter <span class="math inline">\(\texttt{sig}\)</span></li>
+<li><code>TRUE</code>: locally-adaptive scaling (Zelnik-Manor &amp;
+Perona, 2004)</li>
+<li><code>FALSE</code>: global scaling with parameter
+<code>sig</code></li>
 </ul></li>
-<li><span class="math inline">\(\texttt{isModWeighted}\)</span>: apply
-similarity upweighting/downweighting
+<li><code>isModWeighted</code>: apply similarity weightings
 <ul>
-<li><span class="math inline">\(\texttt{ModMethod =
-&quot;snn&quot;}\)</span>: shared nearest neighbors (Jarvis &amp;
-Patrick, 1973)</li>
-<li><span class="math inline">\(\texttt{ModMethod =
-&quot;sim&quot;}\)</span>: similarity-based weighting</li>
-<li><span class="math inline">\(\texttt{ModMethod =
-&quot;both&quot;}\)</span>: combined SNN and SIM</li>
+<li><code>ModMethod = &quot;snn&quot;</code>: shared nearest neighbors (Jarvis
+&amp; Patrick, 1973)</li>
+<li><code>ModMethod = &quot;sim&quot;</code>: similarity-based weighting</li>
+<li><code>ModMethod = &quot;both&quot;</code>: combined SNN and SIM</li>
 </ul></li>
-<li><span class="math inline">\(\texttt{isSparse}\)</span>:
-sparsification when using weighting</li>
+<li><code>isSparse</code>: returns a sparse matrix when using
+weightings</li>
 </ul>
 <p><strong>References</strong></p>
 <ul>
@@ -520,9 +516,9 @@ Analysis and an algorithm. <em>Advances in Neural Information Processing
 Systems, 14</em>.</p></li>
 <li><p>Scrucca, L., Fraley, C., Murphy, T.B., and A. E. Raftery (2023).
 <em>Model-Based Clustering, Classification, and Density Estimation Using
-mclust in R</em>. Chapman and Hall/CRC.</p></li>
+mclust in R</em>. Chapman &amp; Hall.</p></li>
 <li><p>H. Wickham (2016). <em>ggplot2: Elegant Graphics for Data
-Analysis</em>. Springer-Verlag New York.</p></li>
+Analysis</em>. Springer–Verlag New York.</p></li>
 <li><p>Zelnik-Manor, L., and P. Perona (2004). Self-tuning spectral
 clustering. <em>Advances in Neural Information Processing Systems,
 17</em>.</p></li>

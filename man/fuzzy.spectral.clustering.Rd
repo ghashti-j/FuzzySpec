@@ -19,7 +19,7 @@ fuzzy.spectral.clustering(W = NULL,
 \arguments{
   \item{W}{A nonnegative \eqn{n \times n} similarity (adjacency) matrix. Diagonal entries are set to 0 internally. Required.}
   \item{k}{Integer number of clusters. Required.}
-  \item{m}{Fuzzifier for c-means, only used when \code{method = "CM"}. When not provided, algorithm will set \code{m = 2}.}
+  \item{m}{Fuzzy parameter for c-means, only used when \code{method = "CM"}. When not provided, algorithm will set \code{m = 2}.}
   \item{method}{Clustering method applied to the spectral embedding with \code{"CM"} for fuzzy c-means with \pkg{fclust}, or \code{"GMM"} for Gaussian mixtures with \pkg{mclust}. Default is \code{"CM"}.}
   \item{nstart}{Number of random starts for \code{fclust::FKM} when \code{method = "CM"}.}
   \item{max.iter}{Maximum number of iterations for \code{fclust::FKM} when \code{method = "CM"}.}
@@ -30,7 +30,7 @@ Let \eqn{D} be the diagonal degree matrix with \eqn{D_{ii} = \sum_j W_{ij}}. The
 \eqn{L = D^{-1/2} W D^{-1/2},} (Ng, Jordan, and Weiss, 2001) computes its top \eqn{k} eigenvectors, stacks them in \eqn{X \in \mathbb{R}^{n \times k}}, and row-normalizes to \eqn{Y} with
 \eqn{Y_{i\cdot} = X_{i\cdot} / \|X_{i\cdot}\|_2}. Clustering is then performed in the rows of \eqn{Y}.
 
-When \code{method = "CM"}, clustering uses c-means (Bezdek, 1981) with \code{fclust::FKM} on \eqn{Y} with fuzzifier \code{m}, number of starts \code{nstart}, and maximum iterations \code{max.iter}.
+When \code{method = "CM"}, clustering uses c-means (Bezdek, 1981) with \code{fclust::FKM} on \eqn{Y} with fuzzy parameter \code{m}, number of starts \code{nstart}, and maximum iterations \code{max.iter}.
 When \code{method = "GMM"}, clustering uses Gaussian mixture models (see McLachlan and Krishnan, 2008) with \code{mclust::Mclust} with \code{G = k} on \eqn{Y}.
 }
 
@@ -53,7 +53,7 @@ A list with components:
 
   Ng, A., Jordan, M., and Y. Weiss (2001). On spectral clustering: Analysis and an algorithm. \emph{Advances in Neural Information Processing Systems, 14.}
 
-  Scrucca, L., Fraley, C., Murphy, T.B., and A. E. Raftery (2023). \emph{Model-Based Clustering, Classification, and Density Estimation Using mclust in R}. Chapman and Hall/CRC.
+  Scrucca, L., Fraley, C., Murphy, T.B., and A. E. Raftery (2023). \emph{Model-Based Clustering, Classification, and Density Estimation Using mclust in R}. Chapman & Hall.
 }
 
 \seealso{
