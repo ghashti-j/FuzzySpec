@@ -123,13 +123,13 @@ Output locations are defined directly within each script.
 ### Experiment Scripts
 
 - `SA1-SampleAnalysis.R`  
-  Reproduces Section Analysis 1 (simulated datasets)
+  Reproduces Sensitivity Analysis 1 (simulated datasets)
 
 - `SA2-Complete.R`  
-  Reproduces Section Analysis 2 (progressive cluster overlap)
+  Reproduces Sensitivity Analysis 2 (progressive cluster overlap)
 
 - `SA3-Complete.R`  
-  Reproduces Section Analysis 3 (progressive noise dimensions)
+  Reproduces Sensitivity Analysis 3 (progressive noise dimensions)
 
 - `RealData.R`  
   29 methods evaluated on 10 real datasets
